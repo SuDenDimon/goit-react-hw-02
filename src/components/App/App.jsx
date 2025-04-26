@@ -11,6 +11,7 @@ export default function App() {
     neutral: 0,
     bad: 0,
     total: 0,
+    positive: 0,
   });
 
   const updateFeedback = (feedbackType) => {
@@ -25,6 +26,10 @@ export default function App() {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback =
+    totalFeedback > 0
+      ? Math.round(((feedback.good + feedback.neutral) / totalFeedback) * 100)
+      : 0;
 
   return (
     <>
@@ -42,6 +47,7 @@ export default function App() {
           neutral={feedback.neutral}
           bad={feedback.bad}
           total={totalFeedback}
+          positive={positiveFeedback}
         />
       )}
     </>
